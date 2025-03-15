@@ -152,4 +152,3 @@ C:\Users\areej\Documents\ElmBootcamp\Full-Stack Application Using NgRx and Micro
 C:\Users\areej\Documents\ElmBootcamp\Full-Stack Application Using NgRx and MicroservicesAssignment4\assignment4_microservices_angular_products\backend\Backend\ProductService\obj\Debug\net9.0\ProductService.pdb
 C:\Users\areej\Documents\ElmBootcamp\Full-Stack Application Using NgRx and MicroservicesAssignment4\assignment4_microservices_angular_products\backend\Backend\ProductService\obj\Debug\net9.0\ProductService.genruntimeconfig.cache
 C:\Users\areej\Documents\ElmBootcamp\Full-Stack Application Using NgRx and MicroservicesAssignment4\assignment4_microservices_angular_products\backend\Backend\ProductService\obj\Debug\net9.0\ref\ProductService.dll
-C:\Users\areej\Documents\ElmBootcamp\Full-Stack Application Using NgRx and MicroservicesAssignment4\assignment4_microservices_angular_products\backend\Backend\ProductService\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
