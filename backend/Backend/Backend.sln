@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "microservices", "microservices", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService", "ProductService\ProductService.csproj", "{52E7AC4E-B0CE-440A-84D9-BA9100DE5A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService", "OrderService\OrderService.csproj", "{8358EB90-67BF-4A2F-96CC-3D04FF52C059}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52E7AC4E-B0CE-440A-84D9-BA9100DE5A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E7AC4E-B0CE-440A-84D9-BA9100DE5A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E7AC4E-B0CE-440A-84D9-BA9100DE5A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E7AC4E-B0CE-440A-84D9-BA9100DE5A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8358EB90-67BF-4A2F-96CC-3D04FF52C059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8358EB90-67BF-4A2F-96CC-3D04FF52C059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8358EB90-67BF-4A2F-96CC-3D04FF52C059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8358EB90-67BF-4A2F-96CC-3D04FF52C059}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{52E7AC4E-B0CE-440A-84D9-BA9100DE5A07} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{8358EB90-67BF-4A2F-96CC-3D04FF52C059} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C14A8F1A-E202-4817-BEAB-445AF0DD0B94}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,25 @@
+# Ignore build artifacts
+backend/Backend/ProductService/obj/
+
+
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Log files
+*.log
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.idea/
+.vscode/
+.vs/
+
+# Environment files
+.env
