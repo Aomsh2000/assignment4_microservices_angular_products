@@ -1,0 +1,7 @@
+# Ignore build artifacts
+backend/Backend/ProductService/obj/
+
+# Ignore Visual Studio files
+.vs/
+
+node_modules/
