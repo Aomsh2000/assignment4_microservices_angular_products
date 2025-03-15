@@ -46,6 +46,54 @@ namespace OrderService.Data
                 .HasMany(o => o.OrderItems)
                 .WithOne(oi => oi.Order)
                 .HasForeignKey(oi => oi.OrderId);
+
+            // Seed data for Orders and OrderItems
+            modelBuilder.Entity<Order>().HasData(
+                new Order
+                {
+                    Id = 1,
+                    CustomerName = "John Doe",
+                    OrderDate = new DateTime(2025, 3, 12),
+                    TotalAmount = 150.00m
+                },
+                new Order
+                {
+                    Id = 2,
+                    CustomerName = "Jane Smith",
+                    OrderDate = new DateTime(2025, 3, 13),
+                    TotalAmount = 200.00m
+                }
+            );
+
+            modelBuilder.Entity<OrderItem>().HasData(
+                new OrderItem
+                {
+                    Id = 1,
+                    ProductId = 101,
+                    ProductName = "Product A",
+                    Quantity = 2,
+                    Price = 50.00m,
+                    OrderId = 1
+                },
+                new OrderItem
+                {
+                    Id = 2,
+                    ProductId = 102,
+                    ProductName = "Product B",
+                    Quantity = 1,
+                    Price = 50.00m,
+                    OrderId = 1
+                },
+                new OrderItem
+                {
+                    Id = 3,
+                    ProductId = 103,
+                    ProductName = "Product C",
+                    Quantity = 3,
+                    Price = 66.67m,
+                    OrderId = 2
+                }
+            );
         }
     }
 }

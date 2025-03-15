@@ -1,1 +1,29 @@
-<p>product works!</p>
+<!-- Add this button to your HTML -->
+<button class="add-product-btn" routerLink="/app-product-form">+ New Product</button>
+
+<div class="product-container">
+    <div class="product-card" *ngFor="let product of products$ | async">
+      <div class="card-image">
+        <img [src]="product.image" [alt]="product.title" loading="lazy" />
+      </div>
+      <div class="card-details">
+        <h3 class="product-title">{{ product.title }}</h3>
+        <p class="product-category">{{ product.category }}</p>
+        <div class="product-rating">
+          <span class="rate">Rating: {{ product.rating.rate }} / 5</span>
+          <span class="count">{{ product.rating.count }} reviews</span>
+        </div>
+        <div class="product-price">
+          <span class="price">${{ product.price }}</span>
+        </div>
+  
+        <!-- Edit and Delete Buttons -->
+         <div class="product-actions">
+            <button (click)="editProduct(product.id)">Edit</button>
+            <button (click)="deleteProduct(product.id)">Delete</button>    
+         </div>
+      </div>
+    </div>
+  </div>
+  
+  

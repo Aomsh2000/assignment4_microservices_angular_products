@@ -1,0 +1,65 @@
+<div class="form-container" *ngIf="product$ | async as product;">
+    <h2>Edit Product</h2>
+    <form [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Product Title</label>
+        <input id="title" formControlName="title" type="text" class="form-control" />
+        <div *ngIf="editProductForm.get('title')?.invalid && editProductForm.get('title')?.touched" class="error-message">
+          Title is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input id="price" formControlName="price" type="number" class="form-control" />
+        <div *ngIf="editProductForm.get('price')?.invalid && editProductForm.get('price')?.touched" class="error-message">
+          Price is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
+        <div *ngIf="editProductForm.get('description')?.invalid && editProductForm.get('description')?.touched" class="error-message">
+          Description is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input id="category" formControlName="category" type="text" class="form-control" />
+        <div *ngIf="editProductForm.get('category')?.invalid && editProductForm.get('category')?.touched" class="error-message">
+          Category is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="image">Image URL</label>
+        <input id="image" formControlName="image" [value]="product.image" type="text" class="form-control" />
+        <div *ngIf="editProductForm.get('image')?.invalid && editProductForm.get('image')?.touched" class="error-message">
+          Image URL is required.
+        </div>
+      </div>
+  
+      <!-- For Rating Count -->
+<div class="form-group">
+    <label for="count">Rating Count</label>
+    <input id="count" formControlName="rating.count" type="number" class="form-control" />
+    <div *ngIf="editProductForm.get('rating')?.get('count')?.invalid && editProductForm.get('rating')?.get('count')?.touched" class="error-message">
+      Rating Count is required.
+    </div>
+  </div>
+  
+  <!-- For Rating Rate -->
+  <div class="form-group">
+    <label for="rate">Rating Rate</label>
+    <input id="rate" formControlName="rating.rate" type="number" class="form-control" />
+    <div *ngIf="editProductForm.get('rating')?.get('rate')?.invalid && editProductForm.get('rating')?.get('rate')?.touched" class="error-message">
+      Rating Rate is required.
+    </div>
+  </div>
+  
+      <button type="submit" routerLink=''  class="btn btn-primary">Update Product</button>
+    </form>
+  </div>
+  

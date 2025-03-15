@@ -11,8 +11,8 @@ using OrderService.Data;
 namespace OrderService.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20250314145528_initial")]
-    partial class initial
+    [Migration("20250315124045_seeddata")]
+    partial class seeddata
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,22 @@ namespace OrderService.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("order");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CustomerName = "John Doe",
+                            OrderDate = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalAmount = 150.00m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CustomerName = "Jane Smith",
+                            OrderDate = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalAmount = 200.00m
+                        });
                 });
 
             modelBuilder.Entity("OrderService.Models.OrderItem", b =>
@@ -70,6 +86,35 @@ namespace OrderService.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("OrderItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            OrderId = 1,
+                            Price = 50.00m,
+                            ProductId = 101,
+                            ProductName = "Product A",
+                            Quantity = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            OrderId = 1,
+                            Price = 50.00m,
+                            ProductId = 102,
+                            ProductName = "Product B",
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            OrderId = 2,
+                            Price = 66.67m,
+                            ProductId = 103,
+                            ProductName = "Product C",
+                            Quantity = 3
+                        });
                 });
 
             modelBuilder.Entity("OrderService.Models.OrderItem", b =>
