@@ -30,11 +30,16 @@ export const listReducer = createReducer(
     ...state,
     error: null,
   })),
-  on(ProductActions.createProductSuccess, (state, { product }) => ({
-    ...state,
-    products: [...state.products, product], // Add new product to the state
-    error: null,
-  })),
+  on(ProductActions.createProductSuccess, (state, { product }) => {
+    console.log('State before:', state); // Log the state before update
+    const newState = {
+      ...state,
+      products: [...state.products, product],
+      error: null,
+    };
+    console.log('State after:', newState); // Log the state after update
+    return newState;
+  }),
   on(ProductActions.createProductFailure, (state, { error }) => ({
     ...state,
     error,

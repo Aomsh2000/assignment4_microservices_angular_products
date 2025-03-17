@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { catchError,of } from 'rxjs';
 export interface Rating {
   rate: number;
   count: number;
@@ -26,7 +26,12 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   GetProducts(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      catchError(error => {
+          console.error('Error fetching products:', error);
+          return of([]); // Return an empty array in case of error
+      })
+  );;
   }
 
   GetProduct(id: string): Observable<any> {

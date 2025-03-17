@@ -1,63 +1,68 @@
 <div class="form-container">
-    <h2>Create Product</h2>
-    <form [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="title">Product Title</label>
-        <input id="title" formControlName="title" type="text" class="form-control" />
-        <div *ngIf="createProductForm.get('title')?.invalid && createProductForm.get('title')?.touched" class="error-message">
-          Title is required.
-        </div>
+  <h2>Create Product</h2>
+  <form [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Product Title</label>
+      <input id="title" formControlName="title" type="text" class="form-control" />
+      <div *ngIf="createProductForm.get('title')?.invalid && createProductForm.get('title')?.touched" class="error-message">
+        Title is required.
       </div>
-  
-      <div class="form-group">
-        <label for="price">Price</label>
-        <input id="price" formControlName="price" type="number" class="form-control" />
-        <div *ngIf="createProductForm.get('price')?.invalid && createProductForm.get('price')?.touched" class="error-message">
-          Price is required.
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input id="price" formControlName="price" type="number" class="form-control" />
+      <div *ngIf="createProductForm.get('price')?.invalid && createProductForm.get('price')?.touched" class="error-message">
+        Price is required.
       </div>
-  
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" formControlName="description" class="form-control"></textarea>
-        <div *ngIf="createProductForm.get('description')?.invalid && createProductForm.get('description')?.touched" class="error-message">
-          Description is required.
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" class="form-control"></textarea>
+      <div *ngIf="createProductForm.get('description')?.invalid && createProductForm.get('description')?.touched" class="error-message">
+        Description is required.
       </div>
-  
-      <div class="form-group">
-        <label for="category">Category</label>
-        <input id="category" formControlName="category" type="text" class="form-control" />
-        <div *ngIf="createProductForm.get('category')?.invalid && createProductForm.get('category')?.touched" class="error-message">
-          Category is required.
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input id="category" formControlName="category" type="text" class="form-control" />
+      <div *ngIf="createProductForm.get('category')?.invalid && createProductForm.get('category')?.touched" class="error-message">
+        Category is required.
       </div>
-  
-      <div class="form-group">
-        <label for="image">Image URL</label>
-        <input id="image" formControlName="image" type="text" class="form-control" />
-        <div *ngIf="createProductForm.get('image')?.invalid && createProductForm.get('image')?.touched" class="error-message">
-          Image URL is required.
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image URL</label>
+      <input id="image" formControlName="image" type="text" class="form-control" />
+      <div *ngIf="createProductForm.get('image')?.invalid && createProductForm.get('image')?.touched" class="error-message">
+        Image URL is required.
       </div>
-  
+    </div>
+
+    <!-- Nested Form Group for Rating -->
+    <div formGroupName="rating">
       <div class="form-group">
         <label for="count">Rating Count</label>
         <input id="count" formControlName="count" type="number" class="form-control" />
-       <!--  <div *ngIf="createProductForm.get('rating.count')?.invalid && createProductForm.get('rating.count')?.touched" class="error-message">
+        <div *ngIf="createProductForm.get('rating.count')?.invalid && createProductForm.get('rating.count')?.touched" class="error-message">
           Rating Count is required.
-        </div> -->
+        </div>
       </div>
-  
+
       <div class="form-group">
         <label for="rate">Rating Rate</label>
         <input id="rate" formControlName="rate" type="number" class="form-control" />
-       <!--  <div *ngIf="createProductForm.get('rating.rate')?.invalid && createProductForm.get('rating.rate')?.touched" class="error-message">
+        <div *ngIf="createProductForm.get('rating.rate')?.invalid && createProductForm.get('rating.rate')?.touched" class="error-message">
           Rating Rate is required.
-        </div> -->
+        </div>
       </div>
-  
-      <button type="submit"  class="btn btn-primary">Create Product</button>
-    </form>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Product</button>
+  </form>
+  <div *ngIf="isSuccess" class="success-message">
+    Product added successfully!
   </div>
-  
+</div>

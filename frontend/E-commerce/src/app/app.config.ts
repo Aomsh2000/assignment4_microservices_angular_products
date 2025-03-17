@@ -14,11 +14,9 @@ import { OrderEffects } from './store/effects/order.effect';
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
      provideRouter(routes), provideClientHydration(withEventReplay()),
-     provideHttpClient(),
-     provideStore({ products: listReducer }), 
-     provideEffects(ProductEffect),
+     provideStore({ products: listReducer, 
+      orders: orderReducer  }), 
      provideHttpClient(withFetch()),
-     provideStore({ orders: orderReducer }), 
-     provideEffects(OrderEffects),
+     provideEffects(ProductEffect,OrderEffects),
     ]
 };

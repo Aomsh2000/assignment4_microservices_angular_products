@@ -9,7 +9,7 @@ import { selectAllProducts,selectProductError } from '../store/selectors/product
 import * as ProductActions from '../store/actions/product.actions';
 import { ProductService } from '../services/product.service';
 import { inject } from '@angular/core';
-
+import { tap } from 'rxjs';
 @Component({
   selector: 'app-product',
   imports: [CommonModule, ReactiveFormsModule, FormsModule,RouterLink],
@@ -21,78 +21,19 @@ export class ProductComponent implements OnInit {
   productApi = inject(ProductService);
   error!: Observable<string | null>;
   constructor(private store: Store, private router: Router) {
-    this.store.dispatch(ProductActions.loadProducts());
-    this.products$ = this.store.select(selectAllProducts);
+    
+    this.products$ = this.store.select(selectAllProducts).pipe(
+      tap((products) => console.log('Products in selector:', products)) // Log the products
+    );
     this.error = this.store.select(selectProductError);
   }
 
   ngOnInit(): void {
-    // Initialize FormGroup in ngOnInit
-/*     this.productForm = this.fb.group({
-      title: new FormControl('', [Validators.minLength(2), Validators.required]),
-      price: new FormControl('', [Validators.required]),
-      description:new FormControl('', [Validators.required]),
-      category:new FormControl('', [Validators.required]),
-      image: new FormControl('', [Validators.required]),
-      rating: { count: new FormControl('', [Validators.required]), rate: new FormControl('', [Validators.required]),}
-
-      
-    }); */
-
-/*     this.editForm = this.fb.group({
-      title: new FormControl('', [Validators.minLength(2), Validators.required]),
-      price: new FormControl('', [Validators.required]),
-      description:new FormControl('', [Validators.required]),
-      category:new FormControl('', [Validators.required]),
-      image: new FormControl('', [Validators.required]),
-      rating: { count: new FormControl('', [Validators.required]), rate: new FormControl('', [Validators.required]),}
-    }); */
+    
   }
 
-/*   // Create a product
-  createProduct() {
-    if (this.productForm.valid) {
-      const newProduct: Product = {
-        id: this.generateId(),
-        title: this.productForm.value.title,
-        price: this.productForm.value.price,
-        description:this.productForm.value.description,
-        category:this.productForm.value.category,
-        image: this.productForm.value.image,
-        rating: { count: this.productForm.value.count, rate: this.productForm.value.rate }
-      
-      };
 
-      // Dispatch the action to create the product
-      this.store.dispatch(ProductActions.createProduct({ product: newProduct }));
-    } else {
-      // Handle invalid form
-      console.log('Form is not valid');
-    }
-  } */
-
-  // Update a product
- /*  updateProduct(id: number) {
-    if (this.editForm.valid) {
-      const updatedProduct: Product = {
-        id: id, // Use the passed id to update the correct product
-        title: this.editForm.value.title,
-        price: this.editForm.value.price,
-        description:this.editForm.value.description,
-        category:this.editForm.value.category,
-        image: this.editForm.value.image,
-        rating: { count: this.editForm.value.count, rate: this.editForm.value.rate }
-      };
-
-      // Dispatch the action to update the product
-      this.store.dispatch(ProductActions.updateProduct({ id, product: updatedProduct }));
-    } else {
-      // Handle invalid form
-      console.log('Form is not valid');
-    }
-  }  */
     editProduct(id: number) {
-      this.store.dispatch(ProductActions.loadProducts());
       this.router.navigate([`/app-product-edit/${id}`]); 
     }
 
@@ -102,14 +43,9 @@ export class ProductComponent implements OnInit {
     this.store.dispatch(ProductActions.deleteProduct({ id }));
   }
 
-//refresh products
-  loadProducts() {
-    this.store.dispatch(ProductActions.loadProducts());
-  }
 
-/*   generateId(): number {
-    return Math.floor(Math.random() * (9999 - 101 + 1)) + 101;
-  } */
+
+
 }
 
 

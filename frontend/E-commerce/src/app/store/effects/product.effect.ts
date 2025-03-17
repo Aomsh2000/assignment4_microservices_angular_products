@@ -32,7 +32,10 @@ export class ProductEffect {
       ofType(ProductActions.createProduct),
       switchMap(action =>
         this.api.CreateProduct(action.product).pipe(
-          map((product) => ProductActions.createProductSuccess({ product })),
+          map((product) => {
+            console.log('Product created:', product); // Log the response
+            return ProductActions.createProductSuccess({ product });
+          }),
           catchError((error) => of(ProductActions.createProductFailure({ error })))
         )
       )
