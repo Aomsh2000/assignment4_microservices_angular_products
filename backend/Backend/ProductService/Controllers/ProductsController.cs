@@ -26,15 +26,32 @@ namespace ProductService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            // Fetch products from the Fake Store API
-            var products = await _productService.GetProductsAsync();
+            try
+            {
+                // Fetch products from the Fake Store API
+                var products = await _productService.GetProductsAsync();
 
-            // Save products to the database
-            await _context.Products.AddRangeAsync(products);
-            await _context.SaveChangesAsync();
+                // Check for existing products in the database
+                var existingProductIds = await _context.Products.Select(p => p.Id).ToListAsync();
 
-            // Return the list of products
-            return Ok(products);
+                // Filter out products that already exist in the database
+                var newProducts = products.Where(p => !existingProductIds.Contains(p.Id)).ToList();
+
+                // Save only new products to the database
+                if (newProducts.Any())
+                {
+                    await _context.Products.AddRangeAsync(newProducts);
+                    await _context.SaveChangesAsync();
+                }
+
+                // Return the list of products
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                // Handle other errors
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
         }
 
         // GET: api/Products/5

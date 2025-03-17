@@ -12,8 +12,9 @@ export const createOrderFailure = createAction('[Order] Create Order Failure', p
 // Update Order
 export const updateOrder = createAction(
     '[Order] Update Order',
-    props<{ order: Order }>()
+    props<{ id:number,order: Order }>()
   );
+
   export const updateOrderSuccess = createAction(
     '[Order] Update Order Success',
     props<{ order: Order }>()
@@ -25,11 +26,11 @@ export const updateOrder = createAction(
 // Delete Order
 export const deleteOrder = createAction(
     '[Order] Delete Order',
-    props<{ orderId: number }>()
+    props<{ id: number }>()
   );
   export const deleteOrderSuccess = createAction(
     '[Order] Delete Order Success',
-    props<{ orderId: number }>()
+    props<{ id: number }>()
   );
   export const deleteOrderFailure = createAction(
     '[Order] Delete Order Failure',

@@ -41,13 +41,14 @@ export class OrderEffects {
     this.actions$.pipe(
       ofType(OrderActions.updateOrder),
       mergeMap(action =>
-        this.orderService.updateOrder(action.id, action.order).pipe(
-          map(order => OrderActions.updateOrderSuccess({ order })),
+        this.orderService.updateOrder(action.order.id, action.order).pipe(
+          map(() => OrderActions.updateOrderSuccess({ order: action.order })),
           catchError(error => of(OrderActions.updateOrderFailure({ error: error.message })))
         )
       )
     )
   );
+  
 
   deleteOrder$ = createEffect(() =>
     this.actions$.pipe(
